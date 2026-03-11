@@ -1,7 +1,7 @@
 // Gabriel Mosz All Rights Reserved
 
 
-#include "BaseCharacter.h"
+#include "Characters/BaseCharacter.h"
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()
