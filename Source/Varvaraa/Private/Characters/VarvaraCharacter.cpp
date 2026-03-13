@@ -12,6 +12,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "AbilitySystem/BaseAbilitySystemComponent.h"
+#include "AbilitySystem/BaseAttributeSet.h"
 #include "Components/CapsuleComponent.h"
 
 AVarvaraCharacter::AVarvaraCharacter()
@@ -55,12 +57,25 @@ void AVarvaraCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerI
 void AVarvaraCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	Debug::Print(TEXT("Hello World!"));
 }
 
 void AVarvaraCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void AVarvaraCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	if (AbilitySystemComponent && AttributeSet)
+	{
+		const FString ASCText = FString::Printf(TEXT("Owner: %s, AvatarActor: %s"), *AbilitySystemComponent->GetOwnerActor()->GetActorLabel(), *AttributeSet->GetOwningActor()->GetActorLabel());
+		Debug::Print(ASCText);
+	}
+	else
+	{
+		Debug::Print("AbilitySystemComponent is null");
+	}
 }
 
 void AVarvaraCharacter::Input_Move(const FInputActionValue& MoveInput)
