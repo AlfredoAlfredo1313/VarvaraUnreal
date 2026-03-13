@@ -2,6 +2,8 @@
 
 
 #include "Characters/BaseCharacter.h"
+#include "AbilitySystem/BaseAbilitySystemComponent.h"
+#include "AbilitySystem/BaseAttributeSet.h"
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()
