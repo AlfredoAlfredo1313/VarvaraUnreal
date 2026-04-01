@@ -27,6 +27,7 @@ protected:
 
 	virtual void OnGiveAbility(const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilitySpec& Spec) override;
 	//~End GameplayAbility Interface
+	//Teste
 	
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Abilities")
