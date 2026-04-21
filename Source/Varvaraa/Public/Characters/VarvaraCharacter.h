@@ -10,7 +10,7 @@
 class USpringArmComponent;
 class UCameraComponent;
 class UDataAsset_InputConfig;
-class UVarvaraCombatController;
+class UVarvaraCombatComponent;
 struct FInputActionValue;
 
 UCLASS()
@@ -40,7 +40,7 @@ private:
 	UCameraComponent* FollowCamera;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
-	UVarvaraCombatController* CombatController;
+	UVarvaraCombatComponent* CombatComponent;
 
 	
 #pragma endregion
@@ -56,5 +56,5 @@ private:
 #pragma endregion 
 
 	public:
-	FORCEINLINE UVarvaraCombatController* GetCombatController() const { return CombatController; } 
+	FORCEINLINE UVarvaraCombatComponent* GetCombatController() const { return CombatComponent; } 
 };

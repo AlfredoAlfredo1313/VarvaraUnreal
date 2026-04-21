@@ -15,7 +15,7 @@
 #include "AbilitySystem/BaseAbilitySystemComponent.h"
 #include "AbilitySystem/BaseAttributeSet.h"
 #include "Components/CapsuleComponent.h"
-#include "Components/Combat/VarvaraCombatController.h"
+#include "Components/Combat/VarvaraCombatComponent.h"
 #include "DataAssets/StartUpData/DataAsset_StartUpBase.h"
 
 AVarvaraCharacter::AVarvaraCharacter()
@@ -35,7 +35,7 @@ AVarvaraCharacter::AVarvaraCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 
-	CombatController = CreateDefaultSubobject<UVarvaraCombatController>(TEXT("CombatController"));
+	CombatComponent = CreateDefaultSubobject<UVarvaraCombatComponent>(TEXT("CombatController"));
 	
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->MaxWalkSpeed = 400.0f;

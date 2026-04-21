@@ -2,6 +2,7 @@
 
 
 #include "AbilitySystem/Abilities/BaseGameplayAbility.h"
+#include "Components/Combat/PawnCombatComponent.h"
 #include "AbilitySystem/BaseAbilitySystemComponent.h"
 
 void UBaseGameplayAbility::EndAbility(const FGameplayAbilitySpecHandle Handle,
@@ -29,4 +30,9 @@ void UBaseGameplayAbility::OnGiveAbility(const FGameplayAbilityActorInfo* ActorI
 			ActorInfo->AbilitySystemComponent->TryActivateAbility(Spec.Handle);
 		}
 	}
+}
+
+UPawnCombatComponent* UBaseGameplayAbility::GetPawnCombatComponentFromActorInfo() const
+{
+	return GetAvatarActorFromActorInfo()->GetComponentByClass<UPawnCombatComponent>();
 }

@@ -6,6 +6,8 @@
 #include "Abilities/GameplayAbility.h"
 #include "BaseGameplayAbility.generated.h"
 
+class UPawnCombatComponent;
+
 UENUM(BlueprintType)
 enum EAbilityActivationPolicy : uint8
 {
@@ -32,5 +34,8 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Abilities")
 	TEnumAsByte<EAbilityActivationPolicy> ActivationPolicy = OnTriggered;
+
+	UFUNCTION(BlueprintPure, Category = "Abilities")
+	UPawnCombatComponent* GetPawnCombatComponentFromActorInfo() const;
 	
 };
