@@ -4,11 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BaseCharacter.h"
+
 #include "VarvaraCharacter.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
 class UDataAsset_InputConfig;
+class UVarvaraCombatController;
 struct FInputActionValue;
 
 UCLASS()
@@ -37,6 +39,9 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	UVarvaraCombatController* CombatController;
+
 	
 #pragma endregion
 
@@ -49,5 +54,7 @@ private:
 	void Input_Move(const FInputActionValue& MoveInput);
 	void Input_Look(const FInputActionValue& LookInput);
 #pragma endregion 
-	
+
+	public:
+	FORCEINLINE UVarvaraCombatController* GetCombatController() const { return CombatController; } 
 };

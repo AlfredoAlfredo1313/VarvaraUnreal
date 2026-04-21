@@ -1,6 +1,5 @@
 // Gabriel Mosz All Rights Reserved
 
-
 #include "Characters/BaseCharacter.h"
 #include "AbilitySystem/BaseAbilitySystemComponent.h"
 #include "AbilitySystem/BaseAttributeSet.h"
@@ -28,6 +27,8 @@ void ABaseCharacter::PossessedBy(AController* NewController)
 	if (AbilitySystemComponent)
 	{
 		AbilitySystemComponent->InitAbilityActorInfo(this, this);
+		
+		ensureMsgf(!CharacterStartUpData.IsNull(), TEXT("Forgor assign start up to %s"), *GetName());
 	}
 }
 

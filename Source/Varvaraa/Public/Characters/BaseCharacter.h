@@ -9,6 +9,7 @@
 
 class UBaseAttributeSet;
 class UBaseAbilitySystemComponent;
+class UDataAsset_StartUpBase;
 
 UCLASS()
 class VARVARAA_API ABaseCharacter : public ACharacter, public IAbilitySystemInterface
@@ -28,7 +29,10 @@ protected:
 	UBaseAbilitySystemComponent* AbilitySystemComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
-	UBaseAttributeSet* AttributeSet; 
+	UBaseAttributeSet* AttributeSet;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "CharacterData")
+	TSoftObjectPtr<UDataAsset_StartUpBase> CharacterStartUpData;
 
 public:
 	FORCEINLINE UBaseAbilitySystemComponent* GetBaseAbilitySystemComponent() const { return AbilitySystemComponent; }

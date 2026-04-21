@@ -15,6 +15,8 @@
 #include "AbilitySystem/BaseAbilitySystemComponent.h"
 #include "AbilitySystem/BaseAttributeSet.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/Combat/VarvaraCombatController.h"
+#include "DataAssets/StartUpData/DataAsset_StartUpBase.h"
 
 AVarvaraCharacter::AVarvaraCharacter()
 {
@@ -33,6 +35,8 @@ AVarvaraCharacter::AVarvaraCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 
+	CombatController = CreateDefaultSubobject<UVarvaraCombatController>(TEXT("CombatController"));
+	
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->MaxWalkSpeed = 400.0f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 200.0f;
@@ -67,14 +71,12 @@ void AVarvaraCharacter::Tick(float DeltaTime)
 void AVarvaraCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
-	if (AbilitySystemComponent && AttributeSet)
+	if (!CharacterStartUpData.IsNull())
 	{
-		const FString ASCText = FString::Printf(TEXT("Owner: %s, AvatarActor: %s"), *AbilitySystemComponent->GetOwnerActor()->GetActorLabel(), *AttributeSet->GetOwningActor()->GetActorLabel());
-		Debug::Print(ASCText);
-	}
-	else
-	{
-		Debug::Print("AbilitySystemComponent is null");
+		if (UDataAsset_StartUpBase* LoadedData = CharacterStartUpData.LoadSynchronous())
+		{
+			LoadedData->GiveAbilitySystemComponent(AbilitySystemComponent);
+		}
 	}
 }
 
@@ -111,11 +113,11 @@ void AVarvaraCharacter::Input_Look(const FInputActionValue& LookInput)
 	 *	(x, y)
 	 *  x -> Yaw
 	 *	y -> Pitch
-	 */		
-	const FVector2D LookVector = LookInput.Get<FVector2D>();
+	 */
+	const FVector2D LookVector = LookInput.Get<FVector2D>() * 1.5;
 	if (LookVector.Y != 0.f)
 	{
-		AddControllerPitchInput(LookVector.Y);
+		AddControllerPitchInput(-LookVector.Y);
 	}
 	if (LookVector.X != 0.f)
 	{
