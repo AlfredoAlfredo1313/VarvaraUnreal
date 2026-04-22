@@ -7,6 +7,7 @@
 
 #include "VarvaraCharacter.generated.h"
 
+struct FGameplayTag;
 class USpringArmComponent;
 class UCameraComponent;
 class UDataAsset_InputConfig;
@@ -53,6 +54,8 @@ private:
 	
 	void Input_Move(const FInputActionValue& MoveInput);
 	void Input_Look(const FInputActionValue& LookInput);
+	void Input_AbilityInputPressed(FGameplayTag InInputTag);
+	void Input_AbilityInputReleased(FGameplayTag InInputTag);
 #pragma endregion 
 
 	public:

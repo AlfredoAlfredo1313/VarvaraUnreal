@@ -40,7 +40,7 @@ AVarvaraCharacter::AVarvaraCharacter()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->MaxWalkSpeed = 400.0f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 200.0f;
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 800.0f, 0.0f);
 
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
@@ -56,6 +56,7 @@ void AVarvaraCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerI
 	UVarvaraInputComponent* VarvaraInputComponent = CastChecked<UVarvaraInputComponent>(PlayerInputComponent);
 	VarvaraInputComponent->BindNativeInputAction(InputConfigDataAsset, VarvaraGameplayTags::InputTag_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
 	VarvaraInputComponent->BindNativeInputAction(InputConfigDataAsset, VarvaraGameplayTags::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
+	VarvaraInputComponent->BindNativeAbilityAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
 }
 
 void AVarvaraCharacter::BeginPlay()
@@ -125,4 +126,14 @@ void AVarvaraCharacter::Input_Look(const FInputActionValue& LookInput)
 	}
 	
 	
+}
+
+void AVarvaraCharacter::Input_AbilityInputPressed(FGameplayTag InInputTag)
+{
+	AbilitySystemComponent->OnAbilityInputPressed(InInputTag);
+}
+
+void AVarvaraCharacter::Input_AbilityInputReleased(FGameplayTag InInputTag)
+{
+	AbilitySystemComponent->OnAbilityInputReleased(InInputTag);
 }

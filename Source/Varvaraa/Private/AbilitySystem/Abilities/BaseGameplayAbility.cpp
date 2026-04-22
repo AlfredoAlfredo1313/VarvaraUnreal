@@ -36,3 +36,8 @@ UPawnCombatComponent* UBaseGameplayAbility::GetPawnCombatComponentFromActorInfo(
 {
 	return GetAvatarActorFromActorInfo()->GetComponentByClass<UPawnCombatComponent>();
 }
+
+UBaseAbilitySystemComponent* UBaseGameplayAbility::GetBaseAbilitySystemComponentFromActorInfo() const
+{
+	return Cast<UBaseAbilitySystemComponent>(CurrentActorInfo->AbilitySystemComponent);
+}

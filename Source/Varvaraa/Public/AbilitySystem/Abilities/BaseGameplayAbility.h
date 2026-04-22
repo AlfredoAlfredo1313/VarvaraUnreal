@@ -7,6 +7,7 @@
 #include "BaseGameplayAbility.generated.h"
 
 class UPawnCombatComponent;
+class UBaseAbilitySystemComponent;
 
 UENUM(BlueprintType)
 enum EAbilityActivationPolicy : uint8
@@ -37,5 +38,8 @@ protected:
 
 	UFUNCTION(BlueprintPure, Category = "Abilities")
 	UPawnCombatComponent* GetPawnCombatComponentFromActorInfo() const;
+
+	UFUNCTION(BlueprintPure, Category = "Abilities")
+	UBaseAbilitySystemComponent* GetBaseAbilitySystemComponentFromActorInfo() const;
 	
 };
