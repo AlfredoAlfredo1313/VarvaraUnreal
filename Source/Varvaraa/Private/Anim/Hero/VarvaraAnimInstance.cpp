@@ -28,3 +28,5 @@ void UVarvaraAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 	if (IdleElapsedTime >= EnterRelaxThreshold && !bShouldRelax)
 		bShouldRelax = true;
 }
+
+
