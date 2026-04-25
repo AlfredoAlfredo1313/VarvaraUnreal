@@ -25,6 +25,9 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "AnimData|LocomotionData")
 	bool bShouldRelax;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AnimData|LocomotionData")
+	bool bNeverRelax;
 	
 	float IdleElapsedTime;
 

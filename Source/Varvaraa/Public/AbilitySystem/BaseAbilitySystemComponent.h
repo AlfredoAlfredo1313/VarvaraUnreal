@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
+#include "VarvaraTypes/VarvaraStructTypes.h"
 #include "BaseAbilitySystemComponent.generated.h"
 
 /**
@@ -16,6 +17,12 @@ class VARVARAA_API UBaseAbilitySystemComponent : public UAbilitySystemComponent
 	public:
 	void OnAbilityInputPressed(const FGameplayTag& InInputTag);
 	void OnAbilityInputReleased(const FGameplayTag& InInputTag);
+
+	UFUNCTION(BlueprintCallable, Category = "Abilities", meta = (ApplyLevel = "1"))
+	void GrantVarvaraWeaponAbilities(const TArray<FVarvaraAbilitySet>& InWeaponAbilities, int32 ApplyLevel, TArray<FGameplayAbilitySpecHandle>& OutGrantedAbilitySpecHandle);
+
+	UFUNCTION(BlueprintCallable, Category = "Abilities")
+	void RemoveGrantedWeaponAbilities(UPARAM(Ref) TArray<FGameplayAbilitySpecHandle>& InGrantedAbilitySpecHandle);
 	
 	
 	

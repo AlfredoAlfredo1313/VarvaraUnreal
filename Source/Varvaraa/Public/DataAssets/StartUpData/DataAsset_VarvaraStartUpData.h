@@ -7,22 +7,10 @@
 #include "DataAssets/StartUpData/DataAsset_StartUpBase.h"
 #include "DataAsset_VarvaraStartUpData.generated.h"
 
+struct FVarvaraAbilitySet;
 class UVarvaraGameplayAbility;
 
-USTRUCT(BlueprintType)
-struct FVarvaraAbilitySet
-{
-	GENERATED_BODY()
-public:
-	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (Categories = "InputTag"))
-	FGameplayTag InputTag;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<UVarvaraGameplayAbility> AbilityToGrant;
-
-	bool IsValid () const;
-};
 
 /**
  * 

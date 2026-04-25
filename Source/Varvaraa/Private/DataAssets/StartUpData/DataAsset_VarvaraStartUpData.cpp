@@ -3,6 +3,7 @@
 #include "DataAssets/StartUpData/DataAsset_VarvaraStartUpData.h"
 #include "AbilitySystem/Abilities/VarvaraGameplayAbility.h"
 #include "AbilitySystem/BaseAbilitySystemComponent.h"
+#include "VarvaraTypes/VarvaraStructTypes.h"
 
 void UDataAsset_VarvaraStartUpData::GiveAbilitySystemComponent(UBaseAbilitySystemComponent* InASCToGive, int32 ApplyLevel)
 {
@@ -20,9 +21,5 @@ void UDataAsset_VarvaraStartUpData::GiveAbilitySystemComponent(UBaseAbilitySyste
 	}
 }
 
-bool FVarvaraAbilitySet::IsValid() const
-{
-	return InputTag.IsValid() && AbilityToGrant;
-}
 
 

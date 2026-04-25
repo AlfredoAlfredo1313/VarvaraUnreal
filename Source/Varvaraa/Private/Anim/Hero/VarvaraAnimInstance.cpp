@@ -15,6 +15,12 @@ void UVarvaraAnimInstance::NativeInitializeAnimation()
 void UVarvaraAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 {
 	Super::NativeThreadSafeUpdateAnimation(DeltaSeconds);
+	if (bNeverRelax)
+	{
+		if (IdleElapsedTime>0.1)
+			IdleElapsedTime=0;
+		return;
+	}
 	if (bHasAcceleration)
 	{
 		if (bShouldRelax)

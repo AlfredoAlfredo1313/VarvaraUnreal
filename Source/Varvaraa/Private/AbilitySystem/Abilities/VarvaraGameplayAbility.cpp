@@ -3,6 +3,7 @@
 
 #include "AbilitySystem/Abilities/VarvaraGameplayAbility.h"
 
+#include "Anim/Hero/VarvaraAnimInstance.h"
 #include "Characters/VarvaraCharacter.h"
 #include "Controllers/VarvaraController.h"
 
@@ -19,7 +20,7 @@ AVarvaraController* UVarvaraGameplayAbility::GetVarvaraControllerFromActorInfo()
 {
 	if (!CachedVarvaraController.IsValid())
 	{
-		CachedVarvaraController = Cast<AVarvaraController>(GetActorInfo().AvatarActor);
+		CachedVarvaraController = Cast<AVarvaraController>(GetActorInfo().PlayerController);
 	}
 	return CachedVarvaraController.IsValid()? CachedVarvaraController.Get() : nullptr;
 }
@@ -27,4 +28,9 @@ AVarvaraController* UVarvaraGameplayAbility::GetVarvaraControllerFromActorInfo()
 UVarvaraCombatComponent* UVarvaraGameplayAbility::GetCombatComponentFromActorInfo()
 {
 	return GetVarvaraCharacterFromActorInfo()->GetCombatController();
+}
+
+UVarvaraAnimInstance* UVarvaraGameplayAbility::GetVarvaraAnimInstanceFromActorInfo() const
+{
+	return Cast<UVarvaraAnimInstance>(GetOwningComponentFromActorInfo()->GetAnimInstance());
 }

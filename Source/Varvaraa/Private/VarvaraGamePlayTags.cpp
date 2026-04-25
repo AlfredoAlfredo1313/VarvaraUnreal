@@ -13,4 +13,7 @@
 
 		UE_DEFINE_GAMEPLAY_TAG(Player_Event_EquipAxe, "Player.Event.EquipAxe")
 		UE_DEFINE_GAMEPLAY_TAG(Player_Event_UnequipAxe, "Player.Event.UnequipAxe")
+
+		UE_DEFINE_GAMEPLAY_TAG(Player_Ability_EquipAxe, "Player.Ability.EquipAxe")
+		UE_DEFINE_GAMEPLAY_TAG(Player_Ability_UnequipAxe, "Player.Ability.UnequipAxe")
 	}

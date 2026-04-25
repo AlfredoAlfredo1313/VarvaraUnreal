@@ -20,4 +20,8 @@ namespace VarvaraGameplayTags
 	/* Event Tags */
 	VARVARAA_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_EquipAxe)
 	VARVARAA_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_UnequipAxe)
+
+	/* Ability Tags*/
+	VARVARAA_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_EquipAxe)
+	VARVARAA_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_UnequipAxe)
 }

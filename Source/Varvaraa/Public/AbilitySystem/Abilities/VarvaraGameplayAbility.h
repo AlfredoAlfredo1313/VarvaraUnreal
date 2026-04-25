@@ -9,6 +9,7 @@
 class AVarvaraController;
 class UVarvaraCombatComponent;
 class AVarvaraCharacter;
+class UVarvaraAnimInstance;
 /**
  * 
  */
@@ -25,6 +26,9 @@ public:
 	
 	UFUNCTION(BlueprintPure, Category = "Abilities")
 	UVarvaraCombatComponent* GetCombatComponentFromActorInfo();
+
+	UFUNCTION(BlueprintPure, Category = "Abilities")
+	UVarvaraAnimInstance* GetVarvaraAnimInstanceFromActorInfo() const;
 private:
 	TWeakObjectPtr<AVarvaraCharacter> CachedVarvaraCharacter;
 	TWeakObjectPtr<AVarvaraController> CachedVarvaraController;
