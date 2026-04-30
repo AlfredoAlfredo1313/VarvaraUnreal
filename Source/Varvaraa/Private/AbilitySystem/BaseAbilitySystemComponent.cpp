@@ -11,11 +11,7 @@ void UBaseAbilitySystemComponent::OnAbilityInputPressed(const FGameplayTag& InIn
 	for (FGameplayAbilitySpec AbilitySpec : GetActivatableAbilities())
 	{
 		if (!AbilitySpec.GetDynamicSpecSourceTags().HasTag(InInputTag)) continue;
-		if (TryActivateAbility(AbilitySpec.Handle))
-		{
-			Debug::Print("Foi rapaziada");
-		}
-		else
+		if (!TryActivateAbility(AbilitySpec.Handle))
 		{
 			Debug::Print("Foi nada");
 		}

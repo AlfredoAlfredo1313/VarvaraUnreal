@@ -124,8 +124,6 @@ void AVarvaraCharacter::Input_Look(const FInputActionValue& LookInput)
 	{
 		AddControllerYawInput(LookVector.X);
 	}
-	
-	
 }
 
 void AVarvaraCharacter::Input_AbilityInputPressed(FGameplayTag InInputTag)
